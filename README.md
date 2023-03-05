@@ -14,7 +14,9 @@ make clean
 
 ## Dependencies
 
-This tool need the [yaml-cpp](https://github.com/jbeder/yaml-cpp#how-to-build) package to work.
+1. Do not use CMSSW. This tools depends on RDataFrame. It needs ROOT>6.14. The default lxplus ROOT is great.
+
+2. This tool need the [yaml-cpp](https://github.com/jbeder/yaml-cpp#how-to-build) package to work.
 I assume the installation will happen in ```~/local/```
 Otherwise, please edit the LOCAL_INCLUDE and LOCAL_LIB variables in the makefile.
 
