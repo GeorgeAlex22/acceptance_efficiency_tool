@@ -18,7 +18,7 @@ make clean
 
 2. This tool need the [yaml-cpp](https://github.com/jbeder/yaml-cpp#how-to-build) package to work.
 I assume the installation will happen in ```~/local/```
-Otherwise, please edit the LOCAL_INCLUDE and LOCAL_LIB variables in the makefile.
+Otherwise, please edit the ```LOCAL_INCLUDE``` and ```LOCAL_LIB``` variables in the makefile.
 
 ```
 git clone https://github.com/jbeder/yaml-cpp.git
