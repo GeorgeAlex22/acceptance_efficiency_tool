@@ -1,0 +1,6 @@
+*.root
+*.png
+*.pdf
+obj/
+bin/
+python/
