@@ -62,10 +62,21 @@ samples:
       - name: HLT_cuts
         expression: "((genMu1_pt > 9 && abs(genMu1_eta) < 1.5 && recoMu1_DR < 0.03 && recoMu1_pt > 9 && abs(recoMu1_eta) < 1.5 && IPsig1 > 6 && recoMu1_isTrg > 0) || (genMu2_pt > 9 && abs(genMu2_eta) < 1.5 && recoMu2_DR < 0.03 && recoMu2_pt > 9 && abs(recoMu2_eta) < 1.5 && IPsig2 > 6 && recoMu2_isTrg > 0)) && HLT_Mu9_IP6 > 0"
 
-      - name: acc_reco_cuts
-        expression: "((genMu1_pt > 9 && abs(genMu1_eta) < 1.5 && recoMu1_DR < 0.03 && recoMu1_pt > 9 && abs(recoMu1_eta) < 1.5 && IPsig1 > 6 && genMu2_pt > 2 && abs(genMu2_eta) < 2.4 && recoMu1_isTrg > 0) || (genMu2_pt > 9 && abs(genMu2_eta) < 1.5 && recoMu2_DR < 0.03 && recoMu2_pt > 9 && abs(recoMu2_eta) < 1.5 && IPsig2 > 6 && genMu1_pt > 2 && abs(genMu1_eta) < 2.4 && recoMu2_isTrg > 0)) && HLT_Mu9_IP6 > 0 && genKshort_pt > 1 && abs(genKshort_eta) < 2.4"
+      # - name: acc_reco_cuts
+      #   expression: "((genMu1_pt > 9 && abs(genMu1_eta) < 1.5 && recoMu1_DR < 0.03 && recoMu1_pt > 9 && abs(recoMu1_eta) < 1.5 && IPsig1 > 6 && genMu2_pt > 2 && abs(genMu2_eta) < 2.4 && recoMu1_isTrg > 0) || (genMu2_pt > 9 && abs(genMu2_eta) < 1.5 && recoMu2_DR < 0.03 && recoMu2_pt > 9 && abs(recoMu2_eta) < 1.5 && IPsig2 > 6 && genMu1_pt > 2 && abs(genMu1_eta) < 2.4 && recoMu2_isTrg > 0)) && HLT_Mu9_IP6 > 0 && genKshort_pt > 1 && abs(genKshort_eta) < 2.4"
 
-      - name: eff_recon_cuts
+      # - name: eff_recon_cuts
+      #   expression: "((genMu1_pt>9 && abs(genMu1_eta)<1.5 && recoMu1_pt>9 && abs(recoMu1_eta)<1.5 && IPsig1>6 && recoMu1_isTrg>0 && genMu2_pt>2 && abs(genMu2_eta)<2.4) || (genMu2_pt>9 && abs(genMu2_eta)<1.5 && recoMu2_pt>9 && abs(recoMu2_eta)<1.5 && IPsig2>6 && recoMu2_isTrg>0 && genMu1_pt>2 && abs(genMu1_eta)<2.4)) && HLT_Mu9_IP6>0 && genKshort_pt>1 && abs(genKshort_eta)<2.4 && recoKshort_DR<0.03 && recoMu1_mediumId>0 && recoMu2_mediumId>0 && recoMu1_DR<0.03 && recoMu2_DR<0.03"
+      - name: acc_otherL_cuts
+        expression: "((genMu1_pt > 9 && abs(genMu1_eta) < 1.5 && recoMu1_DR < 0.03 && recoMu1_pt > 9 && abs(recoMu1_eta) < 1.5 && IPsig1 > 6 && genMu2_pt > 2 && abs(genMu2_eta) < 2.4 && recoMu1_isTrg > 0) || (genMu2_pt > 9 && abs(genMu2_eta) < 1.5 && recoMu2_DR < 0.03 && recoMu2_pt > 9 && abs(recoMu2_eta) < 1.5 && IPsig2 > 6 && genMu1_pt > 2 && abs(genMu1_eta) < 2.4 && recoMu2_isTrg > 0)) && HLT_Mu9_IP6 > 0"
+
+      - name: eff_otherL_cuts
+        expression: "((genMu1_pt>9 && abs(genMu1_eta)<1.5 && recoMu1_pt>9 && abs(recoMu1_eta)<1.5 && IPsig1>6 && recoMu1_isTrg>0 && genMu2_pt>2 && abs(genMu2_eta)<2.4) || (genMu2_pt>9 && abs(genMu2_eta)<1.5 && recoMu2_pt>9 && abs(recoMu2_eta)<1.5 && IPsig2>6 && recoMu2_isTrg>0 && genMu1_pt>2 && abs(genMu1_eta)<2.4)) && HLT_Mu9_IP6>0 && recoMu1_mediumId>0 && recoMu2_mediumId>0 && recoMu1_DR<0.03 && recoMu2_DR<0.03"
+
+      - name: acc_foundK_cuts
+        expression: "((genMu1_pt>9 && abs(genMu1_eta)<1.5 && recoMu1_pt>9 && abs(recoMu1_eta)<1.5 && IPsig1>6 && recoMu1_isTrg>0 && genMu2_pt>2 && abs(genMu2_eta)<2.4) || (genMu2_pt>9 && abs(genMu2_eta)<1.5 && recoMu2_pt>9 && abs(recoMu2_eta)<1.5 && IPsig2>6 && recoMu2_isTrg>0 && genMu1_pt>2 && abs(genMu1_eta)<2.4)) && HLT_Mu9_IP6>0 && genKshort_pt>1 && abs(genKshort_eta)<2.4 && recoMu1_mediumId>0 && recoMu2_mediumId>0 && recoMu1_DR<0.03 && recoMu2_DR<0.03"
+
+      - name: eff_foundK_cuts
         expression: "((genMu1_pt>9 && abs(genMu1_eta)<1.5 && recoMu1_pt>9 && abs(recoMu1_eta)<1.5 && IPsig1>6 && recoMu1_isTrg>0 && genMu2_pt>2 && abs(genMu2_eta)<2.4) || (genMu2_pt>9 && abs(genMu2_eta)<1.5 && recoMu2_pt>9 && abs(recoMu2_eta)<1.5 && IPsig2>6 && recoMu2_isTrg>0 && genMu1_pt>2 && abs(genMu1_eta)<2.4)) && HLT_Mu9_IP6>0 && genKshort_pt>1 && abs(genKshort_eta)<2.4 && recoKshort_DR<0.03 && recoMu1_mediumId>0 && recoMu2_mediumId>0 && recoMu1_DR<0.03 && recoMu2_DR<0.03"
 
       - name: pres_cuts
