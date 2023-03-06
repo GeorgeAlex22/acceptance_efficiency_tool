@@ -24,9 +24,10 @@ TChain *init_chain(const char *file_path, const char *tree_name)
     return chain;
 }
 
-auto ApplyDefines(RDF::RNode df, const std::vector<std::string> &names, const std::vector<std::string> &exprs,
+auto ApplyDefines(RDF::RNode df, const std::vector<std::string> &names, const std::vector<std::string> &exprs, // TFile *f,
                   unsigned int i = 0)
 {
+
     if (i == names.size())
         return df;
 
@@ -65,7 +66,7 @@ int main(int argc, char *argv[])
         float bin_end = bin[1].as<float>();
         BINS.push_back(std::make_pair(bin_start, bin_end));
     }
-    // int NBINS = BINS.size();
+    int NBINS = BINS.size();
 
     // Read samples
     std::vector<std::string> sample_names;
@@ -94,6 +95,7 @@ int main(int argc, char *argv[])
     for (uint sample_idx = 0; sample_idx < sample_names.size(); sample_idx++)
     {
         // int sample_idx = 0;
+
         // Read cuts for this sample
         std::vector<std::string> cut_names;
         std::vector<std::string> cut_exprs;
@@ -103,6 +105,9 @@ int main(int argc, char *argv[])
         {
             cut_names.push_back(cut["name"].as<std::string>());
             cut_exprs.push_back(cut["expression"].as<std::string>());
+            // char hist_name[100];
+            // sprintf(hist_name, "hist_q2_%s", sample_names[sample_idx].c_str());
+            // TH1I *hist_q2 = new TH1I(hist_name, hist_name, ,);
         }
 
         // Get sample TChain
@@ -115,7 +120,7 @@ int main(int argc, char *argv[])
         // Create RDataFrame
         auto df = RDataFrame(*chain);
 
-        // cout << df.Count().GetValue() << endl;
+        int allEntries = df.Count().GetValue();
 
         auto df_withCols = ApplyDefines(df, def_names, def_exprs);
 
@@ -123,9 +128,26 @@ int main(int argc, char *argv[])
 
         auto cutFlowReport = df_withCuts.Report();
 
+        cout << endl;
         cout << process << "_" << sample_names[sample_idx] << endl;
 
-        cutFlowReport->Print();
+        // cutFlowReport->Print();
+
+        // We can now loop on the cuts
+        std::cout << std::left << std::setw(20) << "Name" << std::setw(20) << "All" << std::setw(20) << "Pass"
+                  << std::setw(20) << "Efficiency %" << std::setw(20) << "Uncertainty %"
+                  << std::setw(20) << "Com. Efficiency %" << std::setw(20) << "Com. Uncertainty %" << std::endl;
+        for (auto &&cutInfo : cutFlowReport)
+        {
+            double p = cutInfo.GetEff() / 100.;
+            double N = cutInfo.GetAll();
+            double delta = TMath::Sqrt(p * (1 - p) / N) * 100; // calculate the uncertainty as a percentage
+            double com_eff = cutInfo.GetPass() / (double)allEntries;
+            double com_unc = TMath::Sqrt(com_eff * (1 - com_eff) / (double)allEntries) * 100;
+            std::cout << std::left << std::setw(20) << cutInfo.GetName() << std::setw(20) << cutInfo.GetAll()
+                      << std::setw(20) << cutInfo.GetPass() << std::setw(20) << cutInfo.GetEff()
+                      << std::setw(20) << delta << std::setw(20) << com_eff * 100 << std::setw(20) << com_unc * 100 << std::endl;
+        }
 
         // cout << df_withCuts.Count().GetValue() << endl;
     }
