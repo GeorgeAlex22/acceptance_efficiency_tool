@@ -39,7 +39,7 @@ If you want you can ```rm -rf yaml-cpp``` as well.
 Run:
 
 ```
-./run.sh cfg/BToKshortMuMu_cfg.yaml
+./run.sh cfg/BToKMuMu_LowQ2_cfg.yaml
 ```
 
 Output:
