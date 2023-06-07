@@ -41,30 +41,29 @@ Run:
 ```
 ./run.sh cfg/BToKshortMuMu_cfg.yaml
 ```
-(ignore warnings)
 
 Output:
 
 ```
-g++ -O2 -Wall `root-config --cflags --libs` -I/afs/cern.ch/user/a/alexandg/local/include -L/afs/cern.ch/user/a/alexandg/local/lib -lyaml-cpp -I./include  -c src/main.cc -o obj/main.o
-src/main.cc:28:37: warning: ‘ApplyDefines’ function uses ‘auto’ type specifier without trailing return type [enabled by default]
-                   unsigned int i = 0)
-                                     ^
-src/main.cc:37:37: warning: ‘ApplyFilters’ function uses ‘auto’ type specifier without trailing return type [enabled by default]
-                   unsigned int i = 0)
-                                     ^
-g++  obj/main.o -O2 -Wall `root-config --cflags --libs` -I/afs/cern.ch/user/a/alexandg/local/include -L/afs/cern.ch/user/a/alexandg/local/lib -lyaml-cpp -I./include  -o bin/main.exe
-BToKshortMuMu_unbiased
-filter_cuts: pass=30892      all=337689     -- eff=9.15 % cumulative eff=9.15 %
-BToKshortMuMu_Filtered
-filter_cuts: pass=227270     all=228727     -- eff=99.36 % cumulative eff=99.36 %
-eta_cuts  : pass=148240     all=227270     -- eff=65.23 % cumulative eff=64.81 %
-pt_cuts   : pass=48936      all=148240     -- eff=33.01 % cumulative eff=21.39 %
-reco_cuts : pass=48770      all=48936      -- eff=99.66 % cumulative eff=21.32 %
-cuts_cuts : pass=13944      all=48770      -- eff=28.59 % cumulative eff=6.10 %
-HLT_cuts  : pass=12893      all=13944      -- eff=92.46 % cumulative eff=5.64 %
-acc_reco_cuts: pass=7925       all=12893      -- eff=61.47 % cumulative eff=3.46 %
-eff_recon_cuts: pass=1119       all=7925       -- eff=14.12 % cumulative eff=0.49 %
-pres_cuts : pass=1072       all=1119       -- eff=95.80 % cumulative eff=0.47 %
+make: `bin/main.exe' is up to date.
+Number of cuts: 2
+Number of cuts: 12
+BToKMuMu_unbiased
+Name                All                 Pass                Efficiency %        Uncertainty %       Tot. Efficiency %   Tot. Uncertainty %
+mass_cuts           2928774             758883              25.9113             0.0256022           25.9113             0.0256022
+filter_cuts         758883              45158               5.95059             0.0271563           1.54187             0.00719958
+
+BToKMuMu_Filtered
+Name                All                 Pass                Efficiency %        Uncertainty %       Tot. Efficiency %   Tot. Uncertainty %
+eta_cuts            2340032             1529772             65.374              0.0311023           65.374              0.0311023
+pt_cuts             1529772             481161              31.4531             0.0375416           20.5622             0.0264203
+reco_cuts           481161              479376              99.629              0.00876441          20.4859             0.0263839
+cuts_cuts           479376              150238              31.3403             0.0669984           6.42034             0.0160236
+HLT_cuts            150238              139671              92.9665             0.065972            5.96876             0.015487
+acc_otherL_cuts     139671              96831               69.3279             0.123388            4.13802             0.0130199
+eff_otherL_cuts     96831               67989               70.2141             0.146964            2.90547             0.0109798
+acc_foundK_cuts     67989               61026               89.7586             0.116278            2.60791             0.0104183
+eff_foundK_cuts     61026               55888               91.5806             0.112405            2.38834             0.00998133
+pres_cuts           55888               52885               94.6268             0.0953819           2.26001             0.00971585
 ```
 
