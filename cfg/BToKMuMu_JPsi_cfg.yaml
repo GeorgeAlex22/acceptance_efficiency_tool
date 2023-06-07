@@ -37,19 +37,22 @@ definitions:
 samples:
   - name: unbiased
     tree: Events
-    paths: /eos/cms/store/cmst3/user/gmelachr/BuToKMuMu_unbiased_CorrectPU/BuToKMuMu_unbiased/BuToKMuMu_unbiased_Chunk*.root_BuToKMuMu_unbiased_Chunk*_*.root
+    # paths: /eos/cms/store/cmst3/user/alexandg/Thesis/RKntuples/BuToKJpsi_ToMuMu_unbiased/BuToKJpsi_ToMuMu_unbiased_Chunk*.root_BuToKJpsi_ToMuMu_unbiased_Chunk*_*.root
+    paths: /eos/cms/store/cmst3/user/gmelachr/BuToKJpsi_unbiased_v7.3/BuToKJpsi_unbiased/BuToKJpsi_unbiased_Chunk*.root_BuToKJpsi_unbiased_Chunk*_*.root
     cuts:
       - name: mass_cuts
-        expression: "!((gen_mll>TMath::Sqrt(0.98)&&gen_mll<TMath::Sqrt(1.1))||(gen_mll>TMath::Sqrt(8.)&&gen_mll<TMath::Sqrt(11.))||(gen_mll>TMath::Sqrt(12.5)&&gen_mll<TMath::Sqrt(14.8225))||gen_mll>TMath::Sqrt(23.))"
+        expression: "gen_mll>2.9&&gen_mll<3.2"
       - name: filter_cuts
         expression: "(genMu1_pt > 6 && TMath::Abs(genMu1_eta) < 2.5) || (genMu2_pt > 6 && TMath::Abs(genMu2_eta) < 2.5)"
 
   - name: Filtered
     tree: Events
-    paths: /eos/cms/store/cmst3/user/gmelachr/BuToKMuMu_TagFilter_CorrectPU/BuToKMuMu_TagFilter/BuToKMuMu_TagFilter_Chunk*.root_BuToKMuMu_TagFilter_Chunk*_*.root
+    # paths: /eos/cms/store/cmst3/user/alexandg/Thesis/RKntuples/BuToKJpsi_ToMuMu_biased/BuToKJpsi_ToMuMu_biased_Chunk*.root_BuToKJpsi_ToMuMu_biased_Chunk*_*.root
+    paths: /eos/cms/store/cmst3/user/gmelachr/BuToKJpsi_filter_v7.3/BuToKJpsi_official/BuToKJpsi_official_Chunk*.root_BuToKJpsi_official_Chunk*_*.root
+    # paths: /eos/cms/store/cmst3/user/alexandg/Thesis/RKntuples/BuToKJpsi_ToMuMu/BuToKJpsi_ToMuMu_Chunk*.root_BuToKJpsi_ToMuMu_Chunk*_*.root
     cuts:
       - name: mass_cuts
-        expression: "!((gen_mll>TMath::Sqrt(0.98)&&gen_mll<TMath::Sqrt(1.1))||(gen_mll>TMath::Sqrt(8.)&&gen_mll<TMath::Sqrt(11.))||(gen_mll>TMath::Sqrt(12.5)&&gen_mll<TMath::Sqrt(14.8225))||gen_mll>TMath::Sqrt(23.))"
+        expression: "gen_mll>2.9&&gen_mll<3.2"
 
       - name: filter_cuts
         expression: "(genMu1_pt > 6 && TMath::Abs(genMu1_eta) < 2.5) || (genMu2_pt > 6 && TMath::Abs(genMu2_eta) < 2.5)"
