@@ -18,15 +18,71 @@ BINS:
   - [18., 19.246]
   - [19.246, 23.]
 
+histograms:
+  - name: h_lead_pt
+    variable: lead_pt
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_sublead_pt
+    variable: lead_pt
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_lead_eta
+    variable: lead_eta
+    nbins: 250
+    xmin: -2.5
+    xmax: 2.5
+  - name: h_sublead_eta
+    variable: sublead_eta
+    nbins: 250
+    xmin: -2.5
+    xmax: 2.5
+  - name: h_IPsig1
+    variable: IPsig1
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_IPsig2
+    variable: IPsig2
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_lead_DR
+    variable: lead_DR
+    nbins: 900
+    xmin: 0.
+    xmax: 3.
+  - name: h_sublead_DR
+    variable: sublead_DR
+    nbins: 900
+    xmin: 0.
+    xmax: 3.
+
+
+
 definitions:
-  - name: "lead_pt"
+  - name: "gen_lead_pt"
     expression:  "TMath::Max(genMu1_pt, genMu2_pt)"
-  - name: "sublead_pt"
+  - name: "gen_sublead_pt"
     expression:  "TMath::Min(genMu1_pt, genMu2_pt)"
-  - name: "lead_eta"
-    expression:  "TMath::Max(genMu1_eta, genMu2_eta)"
-  - name: "sublead_eta"
-    expression:  "TMath::Min(genMu1_eta, genMu2_eta)"
+  - name: "gen_lead_eta"
+    expression: "if(genMu1_pt>genMu2_pt){return genMu1_eta;} else {return genMu2_eta;}"  
+  - name: "gen_sublead_eta"
+    expression: "if(genMu1_pt>genMu2_pt){return genMu2_eta;} else {return genMu1_eta;}"
+  - name: "reco_lead_pt"
+    expression:  "TMath::Max(recoMu1_pt, recoMu2_pt)"
+  - name: "reco_sublead_pt"
+    expression:  "TMath::Min(recoMu1_pt, recoMu2_pt)"
+  - name: "reco_lead_eta"
+    expression: "if(recoMu1_pt>recoMu2_pt){return recoMu1_eta;} else {return recoMu2_eta;}"  
+  - name: "reco_sublead_eta"
+    expression: "if(recoMu1_pt>recoMu2_pt){return recoMu2_eta;} else {return recoMu1_eta;}"
+  - name: "lead_DR"
+    expression: "if(recoMu1_pt>recoMu2_pt){return recoMu1_DR;} else {return recoMu2_DR;}"
+  - name: "sublead_DR"
+    expression: "if(recoMu1_pt>recoMu2_pt){return recoMu2_DR;} else {return recoMu1_DR;}"
   - name: "IPsig1"
     expression: "if(recoMu1_dxyErr!=0.){return abs(recoMu1_dxy) / recoMu1_dxyErr;} else {return (float)-99.;}"
   - name: "IPsig2"

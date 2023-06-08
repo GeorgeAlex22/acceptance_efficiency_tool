@@ -18,6 +18,14 @@ BINS:
   - [18., 19.246]
   - [19.246, 23.]
 
+
+histograms: 
+  - name: "h_recoMu1_pt"
+    variable: "recoMu1_pt"
+    nbins: 100
+    xmin: 0.
+    xmax: 40.
+
 definitions:
   - name: "lead_pt"
     expression:  "TMath::Max(genMu1_pt, genMu2_pt)"
