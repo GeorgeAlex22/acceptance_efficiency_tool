@@ -4,8 +4,9 @@
 
 Runs with 
 ```
-./run.sh <config.yaml>
+./run.sh <config.yaml> [-s] [-v]
 ```
+Where ```-s``` means that no histograms will be saved and ```-v``` will print more information.
 
 Clean with
 ```
@@ -67,3 +68,26 @@ eff_foundK_cuts     61026               55888               91.5806             
 pres_cuts           55888               52885               94.6268             0.0953819           2.26001             0.00971585
 ```
 
+
+## Creating histograms
+
+This program offers the possibility to output a root file containing histograms of variable before and after each cut. To enable the possibility add a ```histograms``` node to the YAML file. For example:
+
+```
+histograms:
+  - name: h_lead_pt
+    variable: lead_pt
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_sublead_pt
+    variable: lead_pt
+    nbins: 1000
+    xmin: 0.
+    xmax: 100.
+  - name: h_lead_eta
+    variable: lead_eta
+    nbins: 250
+    xmin: -2.5
+    xmax: 2.5
+```
